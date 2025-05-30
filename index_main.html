@@ -1,0 +1,56 @@
+<!-- Основная версия стартовой странички -->
+<!DOCTYPE html>
+<html lang="ru"> 
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Montserrat&display=swap" rel="stylesheet">
+
+  <title>Внешний IP-адрес хоста</title>
+
+  <style>
+    body {
+      margin: 0; 
+      height: 100vh;
+      background-image: url('man.png'); 
+      background-size: cover; 
+      background-position: center; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      color: #FFFFFF; 
+      font-size: 5vw; 
+      font-family: 'Orbitron', 'Montserrat', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7); 
+    }
+
+    .ip-container {
+    width: min(60%, 700px); 
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(8px); 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    position: relative;
+    }
+
+    #ip {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4vw;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative; 
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="ip-container">
+    <div id="ip">Загрузка IP...</div>
+  </div>
+  
+  <script src="renderer.js"></script>
+</body>
+
+</html>
