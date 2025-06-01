@@ -42,12 +42,31 @@
     position: relative; 
     }
 
+  button {
+    margin-top: 20px;
+    padding: 8px 16px;
+    font-size: 2.5vw;
+    font-family: 'Orbitron', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: #000000;
+  }
+
   </style>
 </head>
 
 <body>
   <div class="ip-container">
     <div id="ip">Загрузка IP...</div>
+    <button id="refreshBtn">Обновить IP</button>
   </div>
   
   <script src="renderer.js"></script>

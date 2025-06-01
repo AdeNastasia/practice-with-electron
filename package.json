@@ -4,14 +4,15 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
-
+    "start": "electron .",
+    "package": "electron-packager . show-ip --platform=win32 --arch=x64 --out=dist --overwrite"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "electron": "^36.3.2"
+    "electron": "^36.3.2",
+    "electron-packager": "^17.1.2"
   }
 }
