@@ -1,18 +1,29 @@
-function getIp() {
-  const ipElement = document.getElementById('ip');
-  ipElement.innerText = 'Загрузка IP...';
+const { ipcRenderer } = require('electron');
 
-  fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      ipElement.innerText = `Внешний IP хоста: ${data.ip}`;
-    })
-    .catch(error => {
-      ipElement.innerText = 'Не удалось получить IP-адрес.';
-      console.error('Ошибка при получении IP:', error);
-    });
-}
+const getIpButton = document.getElementById('get-ip-btn');
+const statusElement = document.getElementById('status');
 
-getIp();
+getIpButton.addEventListener('click', () => {
+  const host = document.getElementById('host').value;
+  const port = document.getElementById('port').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-document.getElementById('refreshBtn').addEventListener('click', getIp);
+  statusElement.innerText = 'Подключение... (максимум 30 секунд)';
+
+  ipcRenderer.send('get-ip-request', { host, port, username, password });
+
+  const timeout = setTimeout(() => {
+    statusElement.innerText = 'Ошибка: время ожидания истекло.';
+  }, 30000);
+
+  ipcRenderer.once('get-ip-response', (event, data) => {
+    clearTimeout(timeout); 
+
+    if (data.error) {
+      statusElement.innerText = 'Ошибка: ' + data.error;
+    } else {
+      statusElement.innerText = 'IP-адрес: ' + data.ip;
+    }
+  });
+});
